@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card bg-dark border-light">
+            <div class="card-header border-light d-flex justify-content-between align-items-center">
+                <h3 class="text-center mb-0">{{ lang.title }}</h3>
+                <div class="language-switch">
+                    <a href="{{ url_for('set_language', lang='en') }}" class="btn btn-sm btn-outline-light {% if session.lang == 'en' %}active{% endif %}">EN</a>
+                    <a href="{{ url_for('set_language', lang='zh') }}" class="btn btn-sm btn-outline-light {% if session.lang == 'zh' %}active{% endif %}">中文</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">{{ lang.username }}</label>
+                        <input type="text" class="form-control bg-dark text-light border-light" id="username" name="username" required>
+                        <div class="form-text text-light">{{ lang.username_required }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">{{ lang.password }}</label>
+                        <input type="password" class="form-control bg-dark text-light border-light" id="password" name="password" required>
+                        <div class="form-text text-light">{{ lang.password_complexity }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">{{ lang.confirm_password }}</label>
+                        <input type="password" class="form-control bg-dark text-light border-light" id="confirm_password" name="confirm_password" required>
+                        <div class="form-text text-light">{{ lang.password_confirm_required }}</div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">{{ lang.submit }}</button>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <p>{{ lang.have_account }} <a href="{{ url_for('login') }}" class="text-primary">{{ lang.login_link }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
